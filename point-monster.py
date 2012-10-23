@@ -40,11 +40,13 @@ while 1:
   if ircmsg.find("point") != -1:
     sendmsg("POINTS....IT'S WHATS FOR DINNER")
 
-  if ircmsg.find("brent") != -1:
-    sendmsg("BRENT CAN'T HELP YOU NOW. SCORE THE POINTS OR ELSE.")
+  # currently does this everytime he talks...need to rework it
+  #if ircmsg.find("brent") != -1:
+  #  sendmsg("BRENT CAN'T HELP YOU NOW. SCORE THE POINTS OR ELSE.")
 
-  if ircmsg.find("zac") != -1:
-    sendmsg("DID SOMEONE HEAR CRYING? LIKE A LITTLE BABY.")
+  # currently does this everytime he talks...need to rework it
+  #if ircmsg.find("zac") != -1:
+  #  sendmsg("DID SOMEONE HEAR CRYING? LIKE A LITTLE BABY.")
 
   if ircmsg.find("win") != -1:
     sendmsg("POINTS ARE FOR WINNERS!")

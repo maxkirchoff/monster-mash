@@ -46,8 +46,9 @@ while 1:
   if ircmsg.find("blake") != -1:
     sendmsg("BLAKE? I LOVE BLAKE")
 
-  if ircmsg.find("jared") != -1:
-    sendmsg("WHO CARES ABOUT JARED? LET'S TALK ABOUT BUGS.")
+  # currently does this everytime he talks...need to rework it
+  #if ircmsg.find("jared") != -1:
+  #  sendmsg("WHO CARES ABOUT JARED? LET'S TALK ABOUT BUGS.")
 
   if ircmsg.find("bug_monster") != -1:
     sendmsg("WHAT?!?")
