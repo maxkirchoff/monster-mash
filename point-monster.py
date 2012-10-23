@@ -37,8 +37,20 @@ while 1:
   if ircmsg.find(":!v") != -1:
     voice(ircmsg)
 
-  if ircmsg.find("points") != -1:
+  if ircmsg.find("point") != -1:
     sendmsg("POINTS....IT'S WHATS FOR DINNER")
 
-  if ircmsg.find("PING :") != -1: 
+  if ircmsg.find("brent") != -1:
+    sendmsg("BRENT CAN'T HELP YOU NOW. SCORE THE POINTS OR ELSE.")
+
+  if ircmsg.find("zac") != -1:
+    sendmsg("DID SOMEONE HEAR CRYING? LIKE A LITTLE BABY.")
+
+  if ircmsg.find("win") != -1:
+    sendmsg("POINTS ARE FOR WINNERS!")
+
+  if ircmsg.find("points_monster") != -1:
+    sendmsg("MY MOM CALLED ME TEDDY")
+
+  if ircmsg.find("PING :") != -1:
     ping()

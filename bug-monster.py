@@ -40,5 +40,17 @@ while 1:
   if ircmsg.find("bug") != -1:
     sendmsg("BUGS?!?!?! I LOVE BUGS!")
 
+  if ircmsg.find("youtube") != -1:
+    sendmsg("IS THAT A VIDEO ABOUT BUGS?")
+
+  if ircmsg.find("blake") != -1:
+    sendmsg("BLAKE? I LOVE BLAKE")
+
+  if ircmsg.find("jared") != -1:
+    sendmsg("WHO CARES ABOUT JARED? LET'S TALK ABOUT BUGS.")
+
+  if ircmsg.find("bug_monster") != -1:
+    sendmsg("WHAT?!?")
+
   if ircmsg.find("PING :") != -1: 
     ping()
