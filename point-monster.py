@@ -32,27 +32,18 @@ ircsock.send("JOIN "+ channel +"\n")
 while 1: 
   ircmsg = ircsock.recv(2048) 
   ircmsg = ircmsg.strip('\n\r') 
-  print(ircmsg)
-   
+
   if ircmsg.find(":!v") != -1:
     voice(ircmsg)
+  
+  if ircmsg.find("cry") != -1:
+    sendmsg("ZAC?! WHERE IS ZAC?! IS HE HURT?!")
 
-  if ircmsg.find("point") != -1:
-    sendmsg("POINTS....IT'S WHATS FOR DINNER")
-
-  # currently does this everytime he talks...need to rework it
-  #if ircmsg.find("brent") != -1:
-  #  sendmsg("BRENT CAN'T HELP YOU NOW. SCORE THE POINTS OR ELSE.")
-
-  # currently does this everytime he talks...need to rework it
-  #if ircmsg.find("zac") != -1:
-  #  sendmsg("DID SOMEONE HEAR CRYING? LIKE A LITTLE BABY.")
+  if ircmsg.find("sprint") != -1:
+    sendmsg("BEST THING ABOUT SPRINT: I GET TO EAT ENGINEERS AT THE END")
 
   if ircmsg.find("win") != -1:
     sendmsg("POINTS ARE FOR WINNERS!")
-
-  if ircmsg.find("points_monster") != -1:
-    sendmsg("MY MOM CALLED ME TEDDY")
 
   if ircmsg.find("PING :") != -1:
     ping()
