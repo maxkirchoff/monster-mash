@@ -1,4 +1,4 @@
-import socket, ssl, subprocess, time, os, json, random, httplib, urllib, ConfigParser
+import re, socket, ssl, subprocess, time, os, json, random, httplib, urllib, ConfigParser
 from subprocess import *
 
 Config = ConfigParser.ConfigParser()
@@ -7,19 +7,23 @@ Config.read("config.ini")
 server = Config.get("irc", "server")
 port = Config.getint("irc", "port")
 channel = Config.get("irc", "channel")
-botnick = Config.get("bugs", "nick")
+botnick = Config.get("hr", "nick")
 password = Config.get("irc", "password")
 
 def ping(): 
   ircsock.send("PONG :pingis\n")  
 
-def sendmsg(msg): 
+def sendMsg(msg):
   ircsock.send("PRIVMSG "+ channel +" :"+ msg +"\n")
 
-def voice(ircstr):
-  (_, _, voicestr) = ircstr.partition("!v")
-  voicestr = voicestr.upper()
-  sendmsg(voicestr)
+def parseNick(msg):
+  rx = re.compile("(?:!|^)[^!]*")
+  strings = rx.findall(ircmsg)
+  username = strings[0]
+  return username[1:]
+
+def badWords():
+  return Config.get("hr", "bad_words").split(',')
   
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((server, port)) 
@@ -33,14 +37,13 @@ while 1:
   ircmsg = ircsock.recv(2048) 
   ircmsg = ircmsg.strip('\n\r') 
 
-  if ircmsg.find(":!v") != -1:
-    voice(ircmsg)
+  bad_words = badWords()
 
-  if ircmsg.find("youtube") != -1:
-    sendmsg("IS THAT A VIDEO ABOUT BUGS?")
+  for bad_word in bad_words:
+    if ircmsg.find(bad_word) != -1:
+      username = parseNick(ircmsg)
+      sendMsg("HR VIOLATION. " + username + " has been fined one HR credit for saying '" + bad_word + "'")
+      os.system('say "HR VIOLATION. ' + username + ' has been fined one HR credit"')
 
-  if ircmsg.find("blake") != -1:
-    sendmsg("BLAKE? I LOVE BLAKE")
-
-  if ircmsg.find("PING :") != -1: 
+  if ircmsg.find("PING :") != -1:
     ping()
